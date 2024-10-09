@@ -1,2 +1,5 @@
 tbd
 Data
+.env
+__pycache__
+__pycache__/functions.cpython-39.pyc
