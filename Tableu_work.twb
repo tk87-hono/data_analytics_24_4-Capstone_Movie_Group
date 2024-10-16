@@ -514,6 +514,7 @@
           </relation>
           <relation connection='postgres.1bqh2n90k5ein011q8wzw0g5ylhx' name='actors' table='[capstone_24_4_group1].[actors]' type='table' />
           <relation connection='postgres.1bqh2n90k5ein011q8wzw0g5ylhx' name='box_office_data_inflated' table='[capstone_24_4_group1].[box_office_data_inflated]' type='table' />
+          <relation connection='postgres.1bqh2n90k5ein011q8wzw0g5ylhx' name='countries' table='[capstone_24_4_group1].[countries]' type='table' />
           <relation connection='postgres.1bqh2n90k5ein011q8wzw0g5ylhx' name='directors' table='[capstone_24_4_group1].[directors]' type='table' />
           <relation connection='postgres.1bqh2n90k5ein011q8wzw0g5ylhx' name='genres' table='[capstone_24_4_group1].[genres]' type='table' />
           <relation connection='postgres.1bqh2n90k5ein011q8wzw0g5ylhx' name='writers' table='[capstone_24_4_group1].[writers]' type='table' />
@@ -531,7 +532,6 @@
           <map key='[actor]' value='[actors].[actor]' />
           <map key='[average_rating]' value='[IMDB_tickets_data].[average_rating]' />
           <map key='[country (box_office_data_inflated)]' value='[box_office_data_inflated].[country]' />
-          <map key='[country]' value='[IMDB_tickets_data].[country]' />
           <map key='[director2_name]' value='[IMDB_tickets_data].[director2_name]' />
           <map key='[director3_name]' value='[IMDB_tickets_data].[director3_name]' />
           <map key='[director]' value='[directors].[director]' />
@@ -544,12 +544,14 @@
           <map key='[genre]' value='[IMDB_tickets_data].[genre]' />
           <map key='[genres_count]' value='[IMDB_tickets_data].[genres_count]' />
           <map key='[inflated_values]' value='[box_office_data_inflated].[inflated_values]' />
+          <map key='[long_name]' value='[countries].[long_name]' />
           <map key='[num_votes]' value='[IMDB_tickets_data].[num_votes]' />
           <map key='[original_title]' value='[IMDB_tickets_data].[original_title]' />
           <map key='[primary_title]' value='[IMDB_tickets_data].[primary_title]' />
           <map key='[runtime]' value='[IMDB_tickets_data].[runtime]' />
           <map key='[tconst (actors)]' value='[actors].[tconst]' />
           <map key='[tconst (box_office_data_inflated)]' value='[box_office_data_inflated].[tconst]' />
+          <map key='[tconst (countries)]' value='[countries].[tconst]' />
           <map key='[tconst (directors)]' value='[directors].[tconst]' />
           <map key='[tconst (genres)]' value='[genres].[tconst]' />
           <map key='[tconst (writers)]' value='[writers].[tconst]' />
@@ -961,30 +963,12 @@
             <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[IMDB_tickets_data (capstone_24_4_group1.IMDB_tickets_data)_DB31F213942C40968ABEA4A5DAA886BD]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
           </metadata-record>
           <metadata-record class='column'>
-            <remote-name>country</remote-name>
-            <remote-type>129</remote-type>
-            <local-name>[country]</local-name>
-            <parent-name>[IMDB_tickets_data]</parent-name>
-            <remote-alias>country</remote-alias>
-            <ordinal>25</ordinal>
-            <local-type>string</local-type>
-            <aggregation>Count</aggregation>
-            <width>2147483647</width>
-            <contains-null>true</contains-null>
-            <cast-to-local-type>true</cast-to-local-type>
-            <collation flag='0' name='LEN_RUS' />
-            <attributes>
-              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
-            </attributes>
-            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[IMDB_tickets_data (capstone_24_4_group1.IMDB_tickets_data)_DB31F213942C40968ABEA4A5DAA886BD]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
-          </metadata-record>
-          <metadata-record class='column'>
             <remote-name>EU_since_1996</remote-name>
             <remote-type>20</remote-type>
             <local-name>[EU_since_1996]</local-name>
             <parent-name>[IMDB_tickets_data]</parent-name>
             <remote-alias>EU_since_1996</remote-alias>
-            <ordinal>26</ordinal>
+            <ordinal>25</ordinal>
             <local-type>integer</local-type>
             <aggregation>Sum</aggregation>
             <precision>19</precision>
@@ -997,7 +981,7 @@
             <local-name>[EU_tickets_sold]</local-name>
             <parent-name>[IMDB_tickets_data]</parent-name>
             <remote-alias>EU_tickets_sold</remote-alias>
-            <ordinal>27</ordinal>
+            <ordinal>26</ordinal>
             <local-type>integer</local-type>
             <aggregation>Sum</aggregation>
             <precision>19</precision>
@@ -1010,7 +994,7 @@
             <local-name>[distributor]</local-name>
             <parent-name>[IMDB_tickets_data]</parent-name>
             <remote-alias>distributor</remote-alias>
-            <ordinal>28</ordinal>
+            <ordinal>27</ordinal>
             <local-type>string</local-type>
             <aggregation>Count</aggregation>
             <width>2147483647</width>
@@ -1028,7 +1012,7 @@
             <local-name>[NA_gross_sales]</local-name>
             <parent-name>[IMDB_tickets_data]</parent-name>
             <remote-alias>NA_gross_sales</remote-alias>
-            <ordinal>29</ordinal>
+            <ordinal>28</ordinal>
             <local-type>real</local-type>
             <aggregation>Sum</aggregation>
             <precision>17</precision>
@@ -1041,7 +1025,7 @@
             <local-name>[NA_tickets_sold]</local-name>
             <parent-name>[IMDB_tickets_data]</parent-name>
             <remote-alias>NA_tickets_sold</remote-alias>
-            <ordinal>30</ordinal>
+            <ordinal>29</ordinal>
             <local-type>integer</local-type>
             <aggregation>Sum</aggregation>
             <precision>19</precision>
@@ -1054,7 +1038,7 @@
             <local-name>[tconst (actors)]</local-name>
             <parent-name>[actors]</parent-name>
             <remote-alias>tconst</remote-alias>
-            <ordinal>32</ordinal>
+            <ordinal>31</ordinal>
             <local-type>string</local-type>
             <aggregation>Count</aggregation>
             <width>2147483647</width>
@@ -1072,7 +1056,7 @@
             <local-name>[actor]</local-name>
             <parent-name>[actors]</parent-name>
             <remote-alias>actor</remote-alias>
-            <ordinal>33</ordinal>
+            <ordinal>32</ordinal>
             <local-type>string</local-type>
             <aggregation>Count</aggregation>
             <width>2147483647</width>
@@ -1090,7 +1074,7 @@
             <local-name>[tconst (box_office_data_inflated)]</local-name>
             <parent-name>[box_office_data_inflated]</parent-name>
             <remote-alias>tconst</remote-alias>
-            <ordinal>35</ordinal>
+            <ordinal>34</ordinal>
             <local-type>string</local-type>
             <aggregation>Count</aggregation>
             <width>2147483647</width>
@@ -1108,7 +1092,7 @@
             <local-name>[country (box_office_data_inflated)]</local-name>
             <parent-name>[box_office_data_inflated]</parent-name>
             <remote-alias>country</remote-alias>
-            <ordinal>36</ordinal>
+            <ordinal>35</ordinal>
             <local-type>string</local-type>
             <aggregation>Count</aggregation>
             <width>2147483647</width>
@@ -1126,7 +1110,7 @@
             <local-name>[values]</local-name>
             <parent-name>[box_office_data_inflated]</parent-name>
             <remote-alias>values</remote-alias>
-            <ordinal>37</ordinal>
+            <ordinal>36</ordinal>
             <local-type>real</local-type>
             <aggregation>Sum</aggregation>
             <precision>17</precision>
@@ -1139,7 +1123,7 @@
             <local-name>[inflated_values]</local-name>
             <parent-name>[box_office_data_inflated]</parent-name>
             <remote-alias>inflated_values</remote-alias>
-            <ordinal>38</ordinal>
+            <ordinal>37</ordinal>
             <local-type>real</local-type>
             <aggregation>Sum</aggregation>
             <precision>17</precision>
@@ -1149,10 +1133,46 @@
           <metadata-record class='column'>
             <remote-name>tconst</remote-name>
             <remote-type>129</remote-type>
+            <local-name>[tconst (countries)]</local-name>
+            <parent-name>[countries]</parent-name>
+            <remote-alias>tconst</remote-alias>
+            <ordinal>39</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>2147483647</width>
+            <contains-null>true</contains-null>
+            <cast-to-local-type>true</cast-to-local-type>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[countries (capstone_24_4_group1.countries)_963659FFF20347FC853BBDFB8AEBAEC2]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>long_name</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[long_name]</local-name>
+            <parent-name>[countries]</parent-name>
+            <remote-alias>long_name</remote-alias>
+            <ordinal>40</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>2147483647</width>
+            <contains-null>true</contains-null>
+            <cast-to-local-type>true</cast-to-local-type>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[countries (capstone_24_4_group1.countries)_963659FFF20347FC853BBDFB8AEBAEC2]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>tconst</remote-name>
+            <remote-type>129</remote-type>
             <local-name>[tconst (directors)]</local-name>
             <parent-name>[directors]</parent-name>
             <remote-alias>tconst</remote-alias>
-            <ordinal>40</ordinal>
+            <ordinal>42</ordinal>
             <local-type>string</local-type>
             <aggregation>Count</aggregation>
             <width>2147483647</width>
@@ -1170,7 +1190,7 @@
             <local-name>[director]</local-name>
             <parent-name>[directors]</parent-name>
             <remote-alias>director</remote-alias>
-            <ordinal>41</ordinal>
+            <ordinal>43</ordinal>
             <local-type>string</local-type>
             <aggregation>Count</aggregation>
             <width>2147483647</width>
@@ -1188,7 +1208,7 @@
             <local-name>[tconst (genres)]</local-name>
             <parent-name>[genres]</parent-name>
             <remote-alias>tconst</remote-alias>
-            <ordinal>43</ordinal>
+            <ordinal>45</ordinal>
             <local-type>string</local-type>
             <aggregation>Count</aggregation>
             <width>2147483647</width>
@@ -1206,7 +1226,7 @@
             <local-name>[genre (genres)]</local-name>
             <parent-name>[genres]</parent-name>
             <remote-alias>genre</remote-alias>
-            <ordinal>44</ordinal>
+            <ordinal>46</ordinal>
             <local-type>string</local-type>
             <aggregation>Count</aggregation>
             <width>2147483647</width>
@@ -1224,7 +1244,7 @@
             <local-name>[tconst (writers)]</local-name>
             <parent-name>[writers]</parent-name>
             <remote-alias>tconst</remote-alias>
-            <ordinal>46</ordinal>
+            <ordinal>48</ordinal>
             <local-type>string</local-type>
             <aggregation>Count</aggregation>
             <width>2147483647</width>
@@ -1242,7 +1262,7 @@
             <local-name>[writer]</local-name>
             <parent-name>[writers]</parent-name>
             <remote-alias>writer</remote-alias>
-            <ordinal>47</ordinal>
+            <ordinal>49</ordinal>
             <local-type>string</local-type>
             <aggregation>Count</aggregation>
             <width>2147483647</width>
@@ -1276,6 +1296,7 @@
       <_.fcp.ObjectModelTableType.true...column caption='IMDB_tickets_data' datatype='table' name='[__tableau_internal_object_id__].[IMDB_tickets_data (capstone_24_4_group1.IMDB_tickets_data)_DB31F213942C40968ABEA4A5DAA886BD]' role='measure' type='quantitative' />
       <_.fcp.ObjectModelTableType.true...column caption='actors' datatype='table' name='[__tableau_internal_object_id__].[actors (capstone_24_4_group1.actors)_F5A469B88F0B43029013439D306C0157]' role='measure' type='quantitative' />
       <_.fcp.ObjectModelTableType.true...column caption='box_office_data_inflated' datatype='table' name='[__tableau_internal_object_id__].[box_office_data_inflated (capstone_24_4_group1.box_office_data_inflated)_D9D96432A1F546CE863BD1E944E6637A]' role='measure' type='quantitative' />
+      <_.fcp.ObjectModelTableType.true...column caption='countries' datatype='table' name='[__tableau_internal_object_id__].[countries (capstone_24_4_group1.countries)_963659FFF20347FC853BBDFB8AEBAEC2]' role='measure' type='quantitative' />
       <_.fcp.ObjectModelTableType.true...column caption='directors' datatype='table' name='[__tableau_internal_object_id__].[directors (capstone_24_4_group1.directors)_3E709791BCCD46719C512D6210CB45C3]' role='measure' type='quantitative' />
       <_.fcp.ObjectModelTableType.true...column caption='genres' datatype='table' name='[__tableau_internal_object_id__].[genres (capstone_24_4_group1.genres)_18AAB595459A415B97A94DCA043161CB]' role='measure' type='quantitative' />
       <_.fcp.ObjectModelTableType.true...column caption='writers' datatype='table' name='[__tableau_internal_object_id__].[writers (capstone_24_4_group1.writers)_0711A7196A6845A48857107344E9DCBE]' role='measure' type='quantitative' />
@@ -1291,7 +1312,6 @@
           <alias key='&quot;Domestic&quot;' value='USA' />
         </aliases>
       </column>
-      <column caption='Country' datatype='string' name='[country]' role='dimension' semantic-role='[Country].[ISO3166_2]' type='nominal' />
       <column caption='Director2 Name' datatype='string' hidden='true' name='[director2_name]' role='dimension' type='nominal' />
       <column caption='Director3 Name' datatype='string' hidden='true' name='[director3_name]' role='dimension' type='nominal' />
       <column caption='Director' datatype='string' name='[director]' role='dimension' type='nominal' />
@@ -1304,12 +1324,14 @@
       <column caption='Genre' datatype='string' hidden='true' name='[genre]' role='dimension' type='nominal' />
       <column caption='Genres Count' datatype='string' datatype-customized='true' name='[genres_count]' role='dimension' type='nominal' />
       <column caption='Inflated Values' datatype='real' name='[inflated_values]' role='measure' type='quantitative' />
+      <column caption='Long Name' datatype='string' name='[long_name]' role='dimension' type='nominal' />
       <column caption='Num Votes' datatype='integer' name='[num_votes]' role='measure' type='quantitative' />
       <column caption='Original Title' datatype='string' name='[original_title]' role='dimension' type='nominal' />
       <column caption='Primary Title' datatype='string' name='[primary_title]' role='dimension' type='nominal' />
       <column caption='Runtime' datatype='integer' name='[runtime]' role='measure' type='quantitative' />
       <column caption='Tconst (Actors)' datatype='string' name='[tconst (actors)]' role='dimension' type='nominal' />
       <column caption='Tconst (Box Office Data Inflated)' datatype='string' name='[tconst (box_office_data_inflated)]' role='dimension' type='nominal' />
+      <column caption='Tconst (Countries)' datatype='string' name='[tconst (countries)]' role='dimension' type='nominal' />
       <column caption='Tconst (Directors)' datatype='string' name='[tconst (directors)]' role='dimension' type='nominal' />
       <column caption='Tconst (Genres)' datatype='string' name='[tconst (genres)]' role='dimension' type='nominal' />
       <column caption='Tconst (Writers)' datatype='string' name='[tconst (writers)]' role='dimension' type='nominal' />
@@ -1372,12 +1394,13 @@
         </groupfilter>
       </group>
       <extract _.fcp.ObjectModelExtractV2.true...object-id='' _.fcp.VConnDownstreamExtractsWithWarnings.true...user-specific='false' count='-1' enabled='true' units='records'>
-        <connection access_mode='readonly' authentication='auth-none' author-locale='en_GB' class='hyper' dbname='C:/Users/Pro/Desktop/neueFische - Data Analyst/Tableau/IMDB_tickets_data (capstone_24_4_group1.IMDB_tickets_data)+ (postgres).hyper' default-settings='yes' schema='Extract' sslmode='' tablename='Extract' update-time='10/11/2024 01:20:34 PM' username='tableau_internal_user'>
+        <connection access_mode='readonly' authentication='auth-none' author-locale='en_GB' class='hyper' dbname='C:/Users/Pro/Desktop/neueFische - Data Analyst/Capstone/data_analytics_24_4-Capstone_Movie_Group/tableau_extract.hyper' default-settings='yes' schema='Extract' sslmode='' tablename='Extract' update-time='10/16/2024 09:03:03 AM' username='tableau_internal_user'>
           <_.fcp.ObjectModelEncapsulateLegacy.false...relation name='IMDB_tickets_data (capstone_24_4_group1.IMDB_tickets_data)_DB31F213942C40968ABEA4A5DAA886BD' table='[Extract].[IMDB_tickets_data (capstone_24_4_group1.IMDB_tickets_data)_DB31F213942C40968ABEA4A5DAA886BD]' type='table' />
           <_.fcp.ObjectModelEncapsulateLegacy.true...relation type='collection'>
             <relation name='IMDB_tickets_data (capstone_24_4_group1.IMDB_tickets_data)_DB31F213942C40968ABEA4A5DAA886BD' table='[Extract].[IMDB_tickets_data (capstone_24_4_group1.IMDB_tickets_data)_DB31F213942C40968ABEA4A5DAA886BD]' type='table' />
             <relation name='actors (capstone_24_4_group1.actors)_F5A469B88F0B43029013439D306C0157' table='[Extract].[actors (capstone_24_4_group1.actors)_F5A469B88F0B43029013439D306C0157]' type='table' />
             <relation name='box_office_data_inflated (capstone_24_4_group1.box_office_data_inflated)_D9D96432A1F546CE863BD1E944E6637A' table='[Extract].[box_office_data_inflated (capstone_24_4_group1.box_office_data_inflated)_D9D96432A1F546CE863BD1E944E6637A]' type='table' />
+            <relation name='countries (capstone_24_4_group1.countries)_963659FFF20347FC853BBDFB8AEBAEC2' table='[Extract].[countries (capstone_24_4_group1.countries)_963659FFF20347FC853BBDFB8AEBAEC2]' type='table' />
             <relation name='directors (capstone_24_4_group1.directors)_3E709791BCCD46719C512D6210CB45C3' table='[Extract].[directors (capstone_24_4_group1.directors)_3E709791BCCD46719C512D6210CB45C3]' type='table' />
             <relation name='genres (capstone_24_4_group1.genres)_18AAB595459A415B97A94DCA043161CB' table='[Extract].[genres (capstone_24_4_group1.genres)_18AAB595459A415B97A94DCA043161CB]' type='table' />
             <relation name='writers (capstone_24_4_group1.writers)_0711A7196A6845A48857107344E9DCBE' table='[Extract].[writers (capstone_24_4_group1.writers)_0711A7196A6845A48857107344E9DCBE]' type='table' />
@@ -1390,19 +1413,20 @@
             <map key='[actor]' value='[actors (capstone_24_4_group1.actors)_F5A469B88F0B43029013439D306C0157].[actor]' />
             <map key='[average_rating]' value='[IMDB_tickets_data (capstone_24_4_group1.IMDB_tickets_data)_DB31F213942C40968ABEA4A5DAA886BD].[average_rating]' />
             <map key='[country (box_office_data_inflated)]' value='[box_office_data_inflated (capstone_24_4_group1.box_office_data_inflated)_D9D96432A1F546CE863BD1E944E6637A].[country]' />
-            <map key='[country]' value='[IMDB_tickets_data (capstone_24_4_group1.IMDB_tickets_data)_DB31F213942C40968ABEA4A5DAA886BD].[country]' />
             <map key='[director]' value='[directors (capstone_24_4_group1.directors)_3E709791BCCD46719C512D6210CB45C3].[director]' />
             <map key='[directors_count]' value='[IMDB_tickets_data (capstone_24_4_group1.IMDB_tickets_data)_DB31F213942C40968ABEA4A5DAA886BD].[directors_count]' />
             <map key='[distributor]' value='[IMDB_tickets_data (capstone_24_4_group1.IMDB_tickets_data)_DB31F213942C40968ABEA4A5DAA886BD].[distributor]' />
             <map key='[genre (genres)]' value='[genres (capstone_24_4_group1.genres)_18AAB595459A415B97A94DCA043161CB].[genre]' />
             <map key='[genres_count]' value='[IMDB_tickets_data (capstone_24_4_group1.IMDB_tickets_data)_DB31F213942C40968ABEA4A5DAA886BD].[genres_count]' />
             <map key='[inflated_values]' value='[box_office_data_inflated (capstone_24_4_group1.box_office_data_inflated)_D9D96432A1F546CE863BD1E944E6637A].[inflated_values]' />
+            <map key='[long_name]' value='[countries (capstone_24_4_group1.countries)_963659FFF20347FC853BBDFB8AEBAEC2].[long_name]' />
             <map key='[num_votes]' value='[IMDB_tickets_data (capstone_24_4_group1.IMDB_tickets_data)_DB31F213942C40968ABEA4A5DAA886BD].[num_votes]' />
             <map key='[original_title]' value='[IMDB_tickets_data (capstone_24_4_group1.IMDB_tickets_data)_DB31F213942C40968ABEA4A5DAA886BD].[original_title]' />
             <map key='[primary_title]' value='[IMDB_tickets_data (capstone_24_4_group1.IMDB_tickets_data)_DB31F213942C40968ABEA4A5DAA886BD].[primary_title]' />
             <map key='[runtime]' value='[IMDB_tickets_data (capstone_24_4_group1.IMDB_tickets_data)_DB31F213942C40968ABEA4A5DAA886BD].[runtime]' />
             <map key='[tconst (actors)]' value='[actors (capstone_24_4_group1.actors)_F5A469B88F0B43029013439D306C0157].[tconst]' />
             <map key='[tconst (box_office_data_inflated)]' value='[box_office_data_inflated (capstone_24_4_group1.box_office_data_inflated)_D9D96432A1F546CE863BD1E944E6637A].[tconst]' />
+            <map key='[tconst (countries)]' value='[countries (capstone_24_4_group1.countries)_963659FFF20347FC853BBDFB8AEBAEC2].[tconst]' />
             <map key='[tconst (directors)]' value='[directors (capstone_24_4_group1.directors)_3E709791BCCD46719C512D6210CB45C3].[tconst]' />
             <map key='[tconst (genres)]' value='[genres (capstone_24_4_group1.genres)_18AAB595459A415B97A94DCA043161CB].[tconst]' />
             <map key='[tconst (writers)]' value='[writers (capstone_24_4_group1.writers)_0711A7196A6845A48857107344E9DCBE].[tconst]' />
@@ -1412,7 +1436,7 @@
             <map key='[year]' value='[IMDB_tickets_data (capstone_24_4_group1.IMDB_tickets_data)_DB31F213942C40968ABEA4A5DAA886BD].[year]' />
           </cols>
           <refresh>
-            <refresh-event add-from-file-path='IMDB_tickets_data' increment-value='%null%' refresh-type='create' rows-inserted='2793922' timestamp-start='2024-10-11 13:19:54.650' />
+            <refresh-event add-from-file-path='IMDB_tickets_data' increment-value='%null%' refresh-type='create' rows-inserted='2800731' timestamp-start='2024-10-16 09:02:19.323' />
           </refresh>
           <metadata-records>
             <metadata-record class='column'>
@@ -1546,27 +1570,12 @@
               <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[IMDB_tickets_data (capstone_24_4_group1.IMDB_tickets_data)_DB31F213942C40968ABEA4A5DAA886BD]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
             </metadata-record>
             <metadata-record class='column'>
-              <remote-name>country</remote-name>
-              <remote-type>129</remote-type>
-              <local-name>[country]</local-name>
-              <parent-name>[IMDB_tickets_data (capstone_24_4_group1.IMDB_tickets_data)_DB31F213942C40968ABEA4A5DAA886BD]</parent-name>
-              <remote-alias>country</remote-alias>
-              <ordinal>9</ordinal>
-              <family>IMDB_tickets_data</family>
-              <local-type>string</local-type>
-              <aggregation>Count</aggregation>
-              <approx-count>374</approx-count>
-              <contains-null>true</contains-null>
-              <collation flag='0' name='LEN_RUS' />
-              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[IMDB_tickets_data (capstone_24_4_group1.IMDB_tickets_data)_DB31F213942C40968ABEA4A5DAA886BD]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
-            </metadata-record>
-            <metadata-record class='column'>
               <remote-name>EU_since_1996</remote-name>
               <remote-type>20</remote-type>
               <local-name>[EU_since_1996]</local-name>
               <parent-name>[IMDB_tickets_data (capstone_24_4_group1.IMDB_tickets_data)_DB31F213942C40968ABEA4A5DAA886BD]</parent-name>
               <remote-alias>EU_since_1996</remote-alias>
-              <ordinal>10</ordinal>
+              <ordinal>9</ordinal>
               <family>IMDB_tickets_data</family>
               <local-type>integer</local-type>
               <aggregation>Sum</aggregation>
@@ -1580,7 +1589,7 @@
               <local-name>[EU_tickets_sold]</local-name>
               <parent-name>[IMDB_tickets_data (capstone_24_4_group1.IMDB_tickets_data)_DB31F213942C40968ABEA4A5DAA886BD]</parent-name>
               <remote-alias>EU_tickets_sold</remote-alias>
-              <ordinal>11</ordinal>
+              <ordinal>10</ordinal>
               <family>IMDB_tickets_data</family>
               <local-type>integer</local-type>
               <aggregation>Sum</aggregation>
@@ -1594,7 +1603,7 @@
               <local-name>[distributor]</local-name>
               <parent-name>[IMDB_tickets_data (capstone_24_4_group1.IMDB_tickets_data)_DB31F213942C40968ABEA4A5DAA886BD]</parent-name>
               <remote-alias>distributor</remote-alias>
-              <ordinal>12</ordinal>
+              <ordinal>11</ordinal>
               <family>IMDB_tickets_data</family>
               <local-type>string</local-type>
               <aggregation>Count</aggregation>
@@ -1609,7 +1618,7 @@
               <local-name>[NA_gross_sales]</local-name>
               <parent-name>[IMDB_tickets_data (capstone_24_4_group1.IMDB_tickets_data)_DB31F213942C40968ABEA4A5DAA886BD]</parent-name>
               <remote-alias>NA_gross_sales</remote-alias>
-              <ordinal>13</ordinal>
+              <ordinal>12</ordinal>
               <family>IMDB_tickets_data</family>
               <local-type>real</local-type>
               <aggregation>Sum</aggregation>
@@ -1623,7 +1632,7 @@
               <local-name>[NA_tickets_sold]</local-name>
               <parent-name>[IMDB_tickets_data (capstone_24_4_group1.IMDB_tickets_data)_DB31F213942C40968ABEA4A5DAA886BD]</parent-name>
               <remote-alias>NA_tickets_sold</remote-alias>
-              <ordinal>14</ordinal>
+              <ordinal>13</ordinal>
               <family>IMDB_tickets_data</family>
               <local-type>integer</local-type>
               <aggregation>Sum</aggregation>
@@ -1637,7 +1646,7 @@
               <local-name>[tconst (actors)]</local-name>
               <parent-name>[actors (capstone_24_4_group1.actors)_F5A469B88F0B43029013439D306C0157]</parent-name>
               <remote-alias>tconst</remote-alias>
-              <ordinal>15</ordinal>
+              <ordinal>14</ordinal>
               <family>actors</family>
               <local-type>string</local-type>
               <aggregation>Count</aggregation>
@@ -1652,7 +1661,7 @@
               <local-name>[actor]</local-name>
               <parent-name>[actors (capstone_24_4_group1.actors)_F5A469B88F0B43029013439D306C0157]</parent-name>
               <remote-alias>actor</remote-alias>
-              <ordinal>16</ordinal>
+              <ordinal>15</ordinal>
               <family>actors</family>
               <local-type>string</local-type>
               <aggregation>Count</aggregation>
@@ -1667,11 +1676,11 @@
               <local-name>[tconst (box_office_data_inflated)]</local-name>
               <parent-name>[box_office_data_inflated (capstone_24_4_group1.box_office_data_inflated)_D9D96432A1F546CE863BD1E944E6637A]</parent-name>
               <remote-alias>tconst</remote-alias>
-              <ordinal>17</ordinal>
+              <ordinal>16</ordinal>
               <family>box_office_data_inflated</family>
               <local-type>string</local-type>
               <aggregation>Count</aggregation>
-              <approx-count>18947</approx-count>
+              <approx-count>16585</approx-count>
               <contains-null>true</contains-null>
               <collation flag='0' name='LEN_RUS' />
               <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[box_office_data_inflated (capstone_24_4_group1.box_office_data_inflated)_D9D96432A1F546CE863BD1E944E6637A]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
@@ -1682,11 +1691,11 @@
               <local-name>[country (box_office_data_inflated)]</local-name>
               <parent-name>[box_office_data_inflated (capstone_24_4_group1.box_office_data_inflated)_D9D96432A1F546CE863BD1E944E6637A]</parent-name>
               <remote-alias>country</remote-alias>
-              <ordinal>18</ordinal>
+              <ordinal>17</ordinal>
               <family>box_office_data_inflated</family>
               <local-type>string</local-type>
               <aggregation>Count</aggregation>
-              <approx-count>223</approx-count>
+              <approx-count>168</approx-count>
               <contains-null>true</contains-null>
               <collation flag='0' name='LEN_RUS' />
               <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[box_office_data_inflated (capstone_24_4_group1.box_office_data_inflated)_D9D96432A1F546CE863BD1E944E6637A]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
@@ -1697,11 +1706,11 @@
               <local-name>[values]</local-name>
               <parent-name>[box_office_data_inflated (capstone_24_4_group1.box_office_data_inflated)_D9D96432A1F546CE863BD1E944E6637A]</parent-name>
               <remote-alias>values</remote-alias>
-              <ordinal>19</ordinal>
+              <ordinal>18</ordinal>
               <family>box_office_data_inflated</family>
               <local-type>real</local-type>
               <aggregation>Sum</aggregation>
-              <approx-count>136954</approx-count>
+              <approx-count>153299</approx-count>
               <contains-null>true</contains-null>
               <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[box_office_data_inflated (capstone_24_4_group1.box_office_data_inflated)_D9D96432A1F546CE863BD1E944E6637A]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
             </metadata-record>
@@ -1711,7 +1720,7 @@
               <local-name>[inflated_values]</local-name>
               <parent-name>[box_office_data_inflated (capstone_24_4_group1.box_office_data_inflated)_D9D96432A1F546CE863BD1E944E6637A]</parent-name>
               <remote-alias>inflated_values</remote-alias>
-              <ordinal>20</ordinal>
+              <ordinal>19</ordinal>
               <family>box_office_data_inflated</family>
               <local-type>real</local-type>
               <aggregation>Sum</aggregation>
@@ -1722,10 +1731,40 @@
             <metadata-record class='column'>
               <remote-name>tconst</remote-name>
               <remote-type>129</remote-type>
+              <local-name>[tconst (countries)]</local-name>
+              <parent-name>[countries (capstone_24_4_group1.countries)_963659FFF20347FC853BBDFB8AEBAEC2]</parent-name>
+              <remote-alias>tconst</remote-alias>
+              <ordinal>20</ordinal>
+              <family>countries</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>2876</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LEN_RUS' />
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[countries (capstone_24_4_group1.countries)_963659FFF20347FC853BBDFB8AEBAEC2]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>long_name</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[long_name]</local-name>
+              <parent-name>[countries (capstone_24_4_group1.countries)_963659FFF20347FC853BBDFB8AEBAEC2]</parent-name>
+              <remote-alias>long_name</remote-alias>
+              <ordinal>21</ordinal>
+              <family>countries</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>62</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LEN_RUS' />
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[countries (capstone_24_4_group1.countries)_963659FFF20347FC853BBDFB8AEBAEC2]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>tconst</remote-name>
+              <remote-type>129</remote-type>
               <local-name>[tconst (directors)]</local-name>
               <parent-name>[directors (capstone_24_4_group1.directors)_3E709791BCCD46719C512D6210CB45C3]</parent-name>
               <remote-alias>tconst</remote-alias>
-              <ordinal>21</ordinal>
+              <ordinal>22</ordinal>
               <family>directors</family>
               <local-type>string</local-type>
               <aggregation>Count</aggregation>
@@ -1740,7 +1779,7 @@
               <local-name>[director]</local-name>
               <parent-name>[directors (capstone_24_4_group1.directors)_3E709791BCCD46719C512D6210CB45C3]</parent-name>
               <remote-alias>director</remote-alias>
-              <ordinal>22</ordinal>
+              <ordinal>23</ordinal>
               <family>directors</family>
               <local-type>string</local-type>
               <aggregation>Count</aggregation>
@@ -1755,7 +1794,7 @@
               <local-name>[tconst (genres)]</local-name>
               <parent-name>[genres (capstone_24_4_group1.genres)_18AAB595459A415B97A94DCA043161CB]</parent-name>
               <remote-alias>tconst</remote-alias>
-              <ordinal>23</ordinal>
+              <ordinal>24</ordinal>
               <family>genres</family>
               <local-type>string</local-type>
               <aggregation>Count</aggregation>
@@ -1770,7 +1809,7 @@
               <local-name>[genre (genres)]</local-name>
               <parent-name>[genres (capstone_24_4_group1.genres)_18AAB595459A415B97A94DCA043161CB]</parent-name>
               <remote-alias>genre</remote-alias>
-              <ordinal>24</ordinal>
+              <ordinal>25</ordinal>
               <family>genres</family>
               <local-type>string</local-type>
               <aggregation>Count</aggregation>
@@ -1785,7 +1824,7 @@
               <local-name>[tconst (writers)]</local-name>
               <parent-name>[writers (capstone_24_4_group1.writers)_0711A7196A6845A48857107344E9DCBE]</parent-name>
               <remote-alias>tconst</remote-alias>
-              <ordinal>25</ordinal>
+              <ordinal>26</ordinal>
               <family>writers</family>
               <local-type>string</local-type>
               <aggregation>Count</aggregation>
@@ -1800,7 +1839,7 @@
               <local-name>[writer]</local-name>
               <parent-name>[writers (capstone_24_4_group1.writers)_0711A7196A6845A48857107344E9DCBE]</parent-name>
               <remote-alias>writer</remote-alias>
-              <ordinal>26</ordinal>
+              <ordinal>27</ordinal>
               <family>writers</family>
               <local-type>string</local-type>
               <aggregation>Count</aggregation>
@@ -1862,6 +1901,14 @@
               <relation name='box_office_data_inflated (capstone_24_4_group1.box_office_data_inflated)_D9D96432A1F546CE863BD1E944E6637A' table='[Extract].[box_office_data_inflated (capstone_24_4_group1.box_office_data_inflated)_D9D96432A1F546CE863BD1E944E6637A]' type='table' />
             </properties>
           </object>
+          <object caption='countries' id='countries (capstone_24_4_group1.countries)_963659FFF20347FC853BBDFB8AEBAEC2'>
+            <properties context=''>
+              <relation connection='postgres.1bqh2n90k5ein011q8wzw0g5ylhx' name='countries' table='[capstone_24_4_group1].[countries]' type='table' />
+            </properties>
+            <properties context='extract'>
+              <relation name='countries (capstone_24_4_group1.countries)_963659FFF20347FC853BBDFB8AEBAEC2' table='[Extract].[countries (capstone_24_4_group1.countries)_963659FFF20347FC853BBDFB8AEBAEC2]' type='table' />
+            </properties>
+          </object>
           <object caption='directors' id='directors (capstone_24_4_group1.directors)_3E709791BCCD46719C512D6210CB45C3'>
             <properties context=''>
               <relation connection='postgres.1bqh2n90k5ein011q8wzw0g5ylhx' name='directors' table='[capstone_24_4_group1].[directors]' type='table' />
@@ -1903,6 +1950,14 @@
             </expression>
             <first-end-point object-id='IMDB_tickets_data (capstone_24_4_group1.IMDB_tickets_data)_DB31F213942C40968ABEA4A5DAA886BD' />
             <second-end-point object-id='box_office_data_inflated (capstone_24_4_group1.box_office_data_inflated)_D9D96432A1F546CE863BD1E944E6637A' />
+          </relationship>
+          <relationship>
+            <expression op='='>
+              <expression op='[tconst]' />
+              <expression op='[tconst (countries)]' />
+            </expression>
+            <first-end-point object-id='IMDB_tickets_data (capstone_24_4_group1.IMDB_tickets_data)_DB31F213942C40968ABEA4A5DAA886BD' />
+            <second-end-point object-id='countries (capstone_24_4_group1.countries)_963659FFF20347FC853BBDFB8AEBAEC2' />
           </relationship>
           <relationship>
             <expression op='='>
