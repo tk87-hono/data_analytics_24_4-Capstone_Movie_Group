@@ -16,13 +16,14 @@ Bulgaria;Bulgaria
 Cambodia;Cambodia
 Canada;Canada
 Central america;Central America
-Chile;Chile
 Central america+;Central America
+Chile;Chile
 China;China
 Colombia;Colombia
 Costa rica;Costa Rica
 Croatia;Croatia
 CuraÃ§ao;Curaçao
+Curaçao;Curaçao
 Cyprus;Cyprus
 Czech republic;Czechia
 Czech republic/slovakia;Czech Republic/Slovakia
@@ -116,11 +117,12 @@ Switzerland french/italian;Switzerland
 Switzerland german;Switzerland
 Switzerland italian;Switzerland
 Syria;Syrian Arab Republic
+TÃ¼rkiye;Turkey
 Taiwan;Taiwan
 Thailand;Thailand
 Trinidad & tobago;Trinidad and Tobago
 Tunisia;Tunisia
-TÃ¼rkiye;Turkey
+Türkiye;Turkey
 Ukraine;Ukraine
 United arab emirates;United Arab Emirates
 United kingdom;United Kingdom of Great Britain and Northern Ireland
@@ -128,5 +130,5 @@ Uruguay;Uruguay
 Venezuela;Bolivarian Republic of Venezuela
 Vietnam;Vietnam
 West indies;West Indies
-Yugoslavia;Yugoslavia
 World;World
+Yugoslavia;Yugoslavia

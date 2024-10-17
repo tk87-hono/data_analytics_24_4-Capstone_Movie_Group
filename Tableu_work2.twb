@@ -12,6 +12,7 @@
     <_.fcp.ObjectModelTableType.true...ObjectModelTableType />
     <_.fcp.SchemaViewerObjectModel.true...SchemaViewerObjectModel />
     <SheetIdentifierTracking />
+    <SortTagCleanup />
     <_.fcp.VConnDownstreamExtractsWithWarnings.true...VConnDownstreamExtractsWithWarnings />
     <WindowsPersistSimpleIdentifiers />
   </document-format-change-manifest>
@@ -827,8 +828,17 @@
       <column caption='USD per minute' datatype='real' name='[Calculation_2812497971445235714]' role='measure' type='quantitative'>
         <calculation class='tableau' formula='[inflated_values]/[runtime]' />
       </column>
+      <column caption='runtime_label' datatype='string' name='[Calculation_341429150996144128]' role='dimension' type='nominal'>
+        <calculation class='tableau' formula='IF [runtime] &gt;= 150 THEN &quot;&gt;= 150 minutes&quot;&#13;&#10;ELSEIF [runtime] &gt;= 90 THEN &quot;90 to 150 minutes&quot;&#13;&#10;ELSE &quot;Less than 90 minutes&quot;&#13;&#10;END' />
+      </column>
+      <column caption='lt_zoom' datatype='string' name='[Calculation_341429150996979713]' role='dimension' type='nominal'>
+        <calculation class='tableau' formula='IF [runtime] &gt;=240 then &quot;&gt;= 240&quot;&#13;&#10;elseif [runtime] &gt;=225 THEN &quot;225 to 240&quot;&#13;&#10;ELSEIF [runtime] &gt;=210 then &quot;210 to 225&quot;&#13;&#10;ELSEIF [runtime] &gt;=195 then &quot;195 to 210&quot;&#13;&#10;ELSEIF [runtime] &gt;=180 then &quot;180 to 195&quot;&#13;&#10;ELSEIF [runtime] &gt;=165 then &quot;165 to 180&quot;&#13;&#10;ELSEIF [runtime] &gt;=150 then &quot;150 to 165&quot;&#13;&#10;END' />
+      </column>
+      <column caption='zoom_switch' datatype='string' name='[Calculation_341429151000588291]' role='dimension' type='nominal'>
+        <calculation class='tableau' formula='if [Parameters].[Parameter 1] then [Calculation_341429150996979713]&#13;&#10;else [Calculation_869476207272878080]&#13;&#10;END' />
+      </column>
       <column caption='time_range' datatype='string' name='[Calculation_869476207272878080]' role='dimension' type='nominal'>
-        <calculation class='tableau' formula='IF [runtime] &gt;= 150 THEN &quot;long runtime&quot;&#13;&#10;ELSEIF [runtime] &gt;= 90 THEN &quot;normal runtime&quot;&#13;&#10;ELSE &quot;short movies&quot;&#13;&#10;END' />
+        <calculation class='tableau' formula='IF [runtime] &gt;= 150 THEN &quot;long runtime&quot;&#13;&#10;ELSEIF [runtime] &gt;= 90 THEN &quot;normal runtime&quot;&#13;&#10;ELSE &quot;short runtime&quot;&#13;&#10;END' />
       </column>
       <column caption='EU since 1996' datatype='integer' name='[EU_since_1996]' role='measure' type='quantitative' />
       <column caption='EU tickets sold' datatype='integer' name='[EU_tickets_sold]' role='measure' type='quantitative' />
@@ -907,6 +917,7 @@
           <alias key='true' value='Rest of the world' />
         </aliases>
       </column-instance>
+      <column-instance column='[Calculation_341429151000588291]' derivation='None' name='[none:Calculation_341429151000588291:nk]' pivot='key' type='nominal' />
       <column-instance column='[Calculation_869476207272878080]' derivation='None' name='[none:Calculation_869476207272878080:nk]' pivot='key' type='nominal' />
       <column-instance column='[year]' derivation='None' name='[none:year:ok]' pivot='key' type='ordinal' />
       <column-instance column='[EU_tickets_sold]' derivation='Sum' name='[sum:EU_tickets_sold:qk]' pivot='key' type='quantitative' />
@@ -1410,7 +1421,7 @@
           </metadata-records>
         </connection>
       </extract>
-      <layout _.fcp.SchemaViewerObjectModel.false...dim-percentage='0.5' _.fcp.SchemaViewerObjectModel.false...measure-percentage='0.4' dim-ordering='alphabetic' measure-ordering='alphabetic' show-aliased-fields='true' show-structure='true' />
+      <layout _.fcp.SchemaViewerObjectModel.false...dim-percentage='0.5' _.fcp.SchemaViewerObjectModel.false...measure-percentage='0.4' _.fcp.SchemaViewerObjectModel.true...common-percentage='0.978918' _.fcp.SchemaViewerObjectModel.true...user-set-layout-v2='true' dim-ordering='alphabetic' measure-ordering='alphabetic' parameter-percentage='0.0210816' show-aliased-fields='true' show-structure='true' />
       <style>
         <style-rule element='mark'>
           <encoding attr='color' field='[:Measure Names]' type='palette'>
@@ -1434,6 +1445,29 @@
             <map to='#b3b7b8'>
               <bucket>&quot;normal runtime&quot;</bucket>
             </map>
+            <map to='#d3d3d3'>
+              <bucket>&quot;short runtime&quot;</bucket>
+            </map>
+          </encoding>
+          <encoding attr='color' field='[none:Calculation_341429151000588291:nk]' palette='gray_warm_10_0' type='palette'>
+            <map to='#59504e'>
+              <bucket>&quot;&gt;= 240&quot;</bucket>
+            </map>
+            <map to='#726866'>
+              <bucket>&quot;210 to 225&quot;</bucket>
+            </map>
+            <map to='#8b827f'>
+              <bucket>&quot;195 to 210&quot;</bucket>
+            </map>
+            <map to='#a59c99'>
+              <bucket>&quot;180 to 195&quot;</bucket>
+            </map>
+            <map to='#c0b8b4'>
+              <bucket>&quot;165 to 180&quot;</bucket>
+            </map>
+            <map to='#dcd4d0'>
+              <bucket>&quot;150 to 165&quot;</bucket>
+            </map>
           </encoding>
         </style-rule>
       </style>
@@ -1441,6 +1475,15 @@
         <semantic-value key='[Country].[Name]' value='&quot;Germany&quot;' />
       </semantic-values>
       <date-options start-of-week='monday' />
+      <datasource-dependencies datasource='Parameters'>
+        <column alias='Long movies only' caption='zoom_param' datatype='boolean' datatype-customized='true' name='[Parameter 1]' param-domain-type='list' role='measure' type='nominal' value='true'>
+          <calculation class='tableau' formula='true' />
+          <aliases>
+            <alias key='false' value='All data' />
+            <alias key='true' value='Long movies only' />
+          </aliases>
+        </column>
+      </datasource-dependencies>
       <_.fcp.ObjectModelEncapsulateLegacy.true...object-graph>
         <objects>
           <object caption='IMDB_tickets_data' id='IMDB_tickets_data (capstone_24_4_group1.IMDB_tickets_data)_DB31F213942C40968ABEA4A5DAA886BD'>
@@ -1556,9 +1599,23 @@
         </relationships>
       </_.fcp.ObjectModelEncapsulateLegacy.true...object-graph>
     </datasource>
+    <datasource hasconnection='false' inline='true' name='Parameters' version='18.1'>
+      <aliases enabled='yes' />
+      <column alias='Long movies only' caption='zoom_param' datatype='boolean' datatype-customized='true' name='[Parameter 1]' param-domain-type='list' role='measure' type='nominal' value='true'>
+        <calculation class='tableau' formula='true' />
+        <aliases>
+          <alias key='false' value='All data' />
+          <alias key='true' value='Long movies only' />
+        </aliases>
+        <members>
+          <member alias='Long movies only' value='true' />
+          <member alias='All data' value='false' />
+        </members>
+      </column>
+    </datasource>
   </datasources>
   <actions>
-    <action caption='Highlight 1 (generated)' name='[Action1_280D5389A7934F57A4093F1D7D2ACFDA]'>
+    <action caption='Highlight 1 (generated)' name='[Action1_38548C9F061440169E4EF292C9716657]'>
       <activation auto-clear='true' type='on-select' />
       <source type='sheet' worksheet='Sheet 8' />
       <command command='tsc:brush'>
@@ -1944,10 +2001,26 @@
         <view>
           <datasources>
             <datasource caption='IMDB_tickets_data' name='federated.1seasg909skwbc13j9q9w0y9o359' />
+            <datasource name='Parameters' />
           </datasources>
+          <datasource-dependencies datasource='Parameters'>
+            <column alias='Long movies only' caption='zoom_param' datatype='boolean' datatype-customized='true' name='[Parameter 1]' param-domain-type='list' role='measure' type='nominal' value='true'>
+              <calculation class='tableau' formula='true' />
+              <aliases>
+                <alias key='false' value='All data' />
+                <alias key='true' value='Long movies only' />
+              </aliases>
+            </column>
+          </datasource-dependencies>
           <datasource-dependencies datasource='federated.1seasg909skwbc13j9q9w0y9o359'>
+            <column caption='lt_zoom' datatype='string' name='[Calculation_341429150996979713]' role='dimension' type='nominal'>
+              <calculation class='tableau' formula='IF [runtime] &gt;=240 then &quot;&gt;= 240&quot;&#13;&#10;elseif [runtime] &gt;=225 THEN &quot;225 to 240&quot;&#13;&#10;ELSEIF [runtime] &gt;=210 then &quot;210 to 225&quot;&#13;&#10;ELSEIF [runtime] &gt;=195 then &quot;195 to 210&quot;&#13;&#10;ELSEIF [runtime] &gt;=180 then &quot;180 to 195&quot;&#13;&#10;ELSEIF [runtime] &gt;=165 then &quot;165 to 180&quot;&#13;&#10;ELSEIF [runtime] &gt;=150 then &quot;150 to 165&quot;&#13;&#10;END' />
+            </column>
+            <column caption='zoom_switch' datatype='string' name='[Calculation_341429151000588291]' role='dimension' type='nominal'>
+              <calculation class='tableau' formula='if [Parameters].[Parameter 1] then [Calculation_341429150996979713]&#13;&#10;else [Calculation_869476207272878080]&#13;&#10;END' />
+            </column>
             <column caption='time_range' datatype='string' name='[Calculation_869476207272878080]' role='dimension' type='nominal'>
-              <calculation class='tableau' formula='IF [runtime] &gt;= 150 THEN &quot;long runtime&quot;&#13;&#10;ELSEIF [runtime] &gt;= 90 THEN &quot;normal runtime&quot;&#13;&#10;ELSE &quot;short movies&quot;&#13;&#10;END' />
+              <calculation class='tableau' formula='IF [runtime] &gt;= 150 THEN &quot;long runtime&quot;&#13;&#10;ELSEIF [runtime] &gt;= 90 THEN &quot;normal runtime&quot;&#13;&#10;ELSE &quot;short runtime&quot;&#13;&#10;END' />
             </column>
             <column-instance column='[inflated_values]' derivation='Avg' name='[avg:inflated_values:qk]' pivot='key' type='quantitative' />
             <column caption='Country (Box Office Data Inflated)' datatype='string' name='[country (box_office_data_inflated)]' role='dimension' semantic-role='[Country].[ISO3166_2]' type='nominal'>
@@ -1956,11 +2029,31 @@
               </aliases>
             </column>
             <column caption='Inflated Values' datatype='real' name='[inflated_values]' role='measure' type='quantitative' />
-            <column-instance column='[Calculation_869476207272878080]' derivation='None' name='[none:Calculation_869476207272878080:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Calculation_341429151000588291]' derivation='None' name='[none:Calculation_341429151000588291:nk]' pivot='key' type='nominal' />
             <column-instance column='[country (box_office_data_inflated)]' derivation='None' name='[none:country (box_office_data_inflated):nk]' pivot='key' type='nominal' />
             <column-instance column='[runtime]' derivation='None' name='[none:runtime:qk]' pivot='key' type='quantitative' />
             <column caption='Runtime' datatype='integer' name='[runtime]' role='measure' type='quantitative' />
           </datasource-dependencies>
+          <filter class='categorical' column='[federated.1seasg909skwbc13j9q9w0y9o359].[none:Calculation_341429151000588291:nk]'>
+            <groupfilter function='union' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate'>
+              <groupfilter function='member' level='[none:Calculation_341429151000588291:nk]' member='&quot;150 to 165&quot;' />
+              <groupfilter function='member' level='[none:Calculation_341429151000588291:nk]' member='&quot;165 to 180&quot;' />
+              <groupfilter function='member' level='[none:Calculation_341429151000588291:nk]' member='&quot;180 to 195&quot;' />
+              <groupfilter function='member' level='[none:Calculation_341429151000588291:nk]' member='&quot;195 to 210&quot;' />
+              <groupfilter function='member' level='[none:Calculation_341429151000588291:nk]' member='&quot;210 to 225&quot;' />
+              <groupfilter function='member' level='[none:Calculation_341429151000588291:nk]' member='&quot;&gt;= 240&quot;' />
+              <groupfilter function='member' level='[none:Calculation_341429151000588291:nk]' member='&quot;long runtime&quot;' />
+              <groupfilter function='member' level='[none:Calculation_341429151000588291:nk]' member='&quot;normal runtime&quot;' />
+              <groupfilter function='member' level='[none:Calculation_341429151000588291:nk]' member='&quot;short runtime&quot;' />
+            </groupfilter>
+          </filter>
+          <manual-sort column='[federated.1seasg909skwbc13j9q9w0y9o359].[none:Calculation_341429151000588291:nk]' direction='ASC'>
+            <dictionary>
+              <bucket>&quot;short runtime&quot;</bucket>
+              <bucket>&quot;normal runtime&quot;</bucket>
+              <bucket>&quot;long runtime&quot;</bucket>
+            </dictionary>
+          </manual-sort>
           <filter class='categorical' column='[federated.1seasg909skwbc13j9q9w0y9o359].[none:country (box_office_data_inflated):nk]'>
             <groupfilter function='member' level='[none:country (box_office_data_inflated):nk]' member='&quot;World&quot;' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
           </filter>
@@ -1968,18 +2061,20 @@
             <min>44</min>
             <max>374</max>
           </filter>
-          <shelf-sorts>
-            <shelf-sort-v2 dimension-to-sort='[federated.1seasg909skwbc13j9q9w0y9o359].[none:Calculation_869476207272878080:nk]' direction='ASC' is-on-innermost-dimension='true' measure-to-sort-by='[federated.1seasg909skwbc13j9q9w0y9o359].[avg:inflated_values:qk]' shelf='columns' />
-          </shelf-sorts>
           <slices>
             <column>[federated.1seasg909skwbc13j9q9w0y9o359].[none:runtime:qk]</column>
             <column>[federated.1seasg909skwbc13j9q9w0y9o359].[none:country (box_office_data_inflated):nk]</column>
+            <column>[federated.1seasg909skwbc13j9q9w0y9o359].[none:Calculation_341429151000588291:nk]</column>
           </slices>
           <aggregation value='true' />
         </view>
         <style>
           <style-rule element='mark'>
             <encoding attr='color' field='[federated.1seasg909skwbc13j9q9w0y9o359].[avg:inflated_values:qk]' palette='gray_warm_10_0' type='interpolated' />
+          </style-rule>
+          <style-rule element='refline'>
+            <format attr='fill-above' id='refline1' value='#00000000' />
+            <format attr='fill-below' id='refline1' value='#00000000' />
           </style-rule>
           <style-rule element='refband'>
             <format attr='stroke-size' id='refline0' value='0' />
@@ -1990,10 +2085,10 @@
             <view>
               <breakdown value='auto' />
             </view>
-            <mark class='Bar' />
+            <mark class='Automatic' />
             <mark-sizing mark-sizing-setting='marks-scaling-off' />
             <encodings>
-              <color column='[federated.1seasg909skwbc13j9q9w0y9o359].[none:Calculation_869476207272878080:nk]' />
+              <color column='[federated.1seasg909skwbc13j9q9w0y9o359].[none:Calculation_341429151000588291:nk]' />
               <text column='[federated.1seasg909skwbc13j9q9w0y9o359].[avg:inflated_values:qk]' />
             </encodings>
             <style>
@@ -2006,7 +2101,7 @@
           </pane>
         </panes>
         <rows>[federated.1seasg909skwbc13j9q9w0y9o359].[avg:inflated_values:qk]</rows>
-        <cols>[federated.1seasg909skwbc13j9q9w0y9o359].[none:Calculation_869476207272878080:nk]</cols>
+        <cols>[federated.1seasg909skwbc13j9q9w0y9o359].[none:Calculation_341429151000588291:nk]</cols>
         <show-full-range>
           <column>[federated.1seasg909skwbc13j9q9w0y9o359].[Runtime dimension (bin)]</column>
         </show-full-range>
@@ -2274,7 +2369,8 @@
             <card type='pages' />
             <card type='filters' />
             <card type='marks' />
-            <card pane-specification-id='1' param='[federated.1seasg909skwbc13j9q9w0y9o359].[none:Calculation_869476207272878080:nk]' type='color' />
+            <card pane-specification-id='1' param='[federated.1seasg909skwbc13j9q9w0y9o359].[none:Calculation_341429151000588291:nk]' type='color' />
+            <card mode='compact' param='[Parameters].[Parameter 1]' type='parameter' />
           </strip>
         </edge>
         <edge name='top'>
@@ -2290,8 +2386,13 @@
         </edge>
       </cards>
       <viewpoint>
+        <zoom type='entire-view' />
         <highlight>
           <color-one-way>
+            <field>[federated.1seasg909skwbc13j9q9w0y9o359].[attr:Calculation_341429150996144128:nk]</field>
+            <field>[federated.1seasg909skwbc13j9q9w0y9o359].[none:Calculation_341429150996144128:nk]</field>
+            <field>[federated.1seasg909skwbc13j9q9w0y9o359].[none:Calculation_341429150996979713:nk]</field>
+            <field>[federated.1seasg909skwbc13j9q9w0y9o359].[none:Calculation_341429151000588291:nk]</field>
             <field>[federated.1seasg909skwbc13j9q9w0y9o359].[none:Runtime (copy)_2812497971440664576:ok]</field>
             <field>[federated.1seasg909skwbc13j9q9w0y9o359].[none:Runtime dimension (bin):ok]</field>
             <field>[federated.1seasg909skwbc13j9q9w0y9o359].[none:country (box_office_data_inflated):nk]</field>
@@ -3007,114 +3108,54 @@
     </thumbnail>
     <thumbnail height='192' name='Sheet 8' width='192'>
       iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAYAAABS3GwHAAAACXBIWXMAAA7DAAAOwwHHb6hk
-      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
-      AAAAAElFTkSuQmCC
+      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
+      H5YKeCzHe+kBAAAAAElFTkSuQmCC
     </thumbnail>
     <thumbnail height='192' name='Sheet 9' width='184'>
       iVBORw0KGgoAAAANSUhEUgAAALgAAADACAYAAAC3QqlrAAAACXBIWXMAAA7DAAAOwwHHb6hk
