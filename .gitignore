@@ -2,4 +2,5 @@
 Data
 .DS_Store
 .env
-__pycache__/
+__pycache__
+__pycache__/sql_functions.cpython-39.pyc
