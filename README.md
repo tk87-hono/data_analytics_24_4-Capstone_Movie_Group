@@ -29,7 +29,7 @@ European Audiovisual Observatory | https://www.obs.coe.int/en/web/observatoire |
 - explore the first three data sources: IMDB-data, NA-ticket-sales, and EU-ticket-sales
 - excluded unneeded columns
 - transform columns into neccessary form
-- merge tables from IMDB into one big table with each row desribing one unique movie
+- merge tables from IMDB into one big table with each row describing one unique movie
 
 ## 2. Merging the initial three data tables
 
