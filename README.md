@@ -33,13 +33,13 @@ European Audiovisual Observatory | https://www.obs.coe.int/en/web/observatoire |
 
 ## 2. Merging the initial three data tables
 
-Next, we need to combine our information on number of tickets sold from The Numbers the European Audiovisual Observatory with information on each movie from IMDB. 
+Next, we need to combine our information on number of tickets sold from The Numbers and the European Audiovisual Observatory with information on each movie from IMDB. 
 The only overlapping columns to merge with are _Movie Title_ and _Release Year_. Since both do not match perfectly between the three sources 
-(some movies had were documented with other names or using other symbols), we write a function performing lots of string formations. 
+(some movies are documented with other names or using other symbols), we write a function performing lots of string formatting. 
 
 [2.0_table-merge_additional-data.ipynb](2.0_table-merge_additional-data.ipynb)
 - we create a new seperate table containing additional titles for each movie
-- goal is to have more title to compare with when merging thereby increase the number of successfully merged rows
+- goal is to have more titles to compare with when merging thereby increase the number of successfully merged rows
 
 [2.1_table-merge_part1.ipynb](2.1_table-merge_part1.ipynb)
 - finally, after applying the function, we are left with roughly 300 movies that can not find there match in the IMDB dataset
@@ -47,11 +47,11 @@ The only overlapping columns to merge with are _Movie Title_ and _Release Year_.
 
 [2.2_table-merge_part2.ipynb](2.2_table-merge_part2.ipynb)
 - in part 2, we correct another 100 by hand
-- there are different notebooks for each chunk of 100 rows because we split the three collaborators of this project
+- there are different notebooks for each chunk of 100 rows because we split the task between the three collaborators of this project
 
 [2.3_table-merge_final-nb.ipynb](2.3_table-merge_final-nb.ipynb)
 - in part 3, we correct the last 100 movies by hand
-- we upload our chunks to a postgreSQL database and combine the tables back to their original size
+- we upload our chunks to a postgreSQL database
 - finally, we merge on _Movie Title_ and _Release Year_, check that all movies found their match and upload our final table
 
 ## 3. Webscraping and preparing Box Office revenue data
@@ -61,7 +61,7 @@ The only overlapping columns to merge with are _Movie Title_ and _Release Year_.
 - next, we correct box-office-revenues for inflation
 
 [3.1_box-office-revenue_further-corrections.ipynb](3.1_box-office-revenue_further-corrections.ipynb)
-- finally, we correct our data making sure to have correct values for worldwide box-office-revenue
+- finally, we correct our data making sure to have correct values for worldwide box office revenue
 
 [3.2_box-office-revenue_further-inflation-correction-categories.ipynb](3.2_box-office-revenue_further-inflation-correction-categories.ipynb)
 - additional information on the categories for which we can correct for inflation
