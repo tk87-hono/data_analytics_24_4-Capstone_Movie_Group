@@ -91,5 +91,8 @@ The only overlapping columns to merge with are _Movie Title_ and _Release Year_.
 ## DATA VISUALISATION
 Examples of visualizations that you can also see in our final presentation (link in Introduction)
 
+![Inflation Correction Highlighting](pictures/Inflation_correction_graph.png)
 
+![Changes in Avg Box Office for different Countries](pictures/dumbbell_graph.png)
 
+![Occurences in Top 5 Genres](pictures/top_5-genres_graph.png)
