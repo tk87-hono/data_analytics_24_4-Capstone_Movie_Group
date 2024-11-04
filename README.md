@@ -88,6 +88,9 @@ The only overlapping columns to merge with are _Movie Title_ and _Release Year_.
 - we created an additional table showing the avg box-office and rank for each genre over each year in SQL
 
 
+---
+
+
 ## DATA VISUALISATION
 Examples of visualizations that you can also see in our final presentation (link in Introduction)
 
