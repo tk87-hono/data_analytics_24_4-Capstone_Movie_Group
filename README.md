@@ -56,14 +56,18 @@ The only overlapping columns to merge with are _Movie Title_ and _Release Year_.
 
 ## 3. Webscraping and preparing Box Office revenue data
 
-[3.0_box-office-revenue_preparation.ipynb](3.0_box-office-revenue_preparation.ipynb)
+[3.0_box-office-revenue_webscraping-script.R](3.0_box-office-revenue_webscraping-script.R)
+- we use the unique IMDB identifier of each movie to webscrape Box Office Mojo
+- the result is saves as a csv and further adjusted and prepared in the following Python noteboooks
+
+[3.1_box-office-revenue_preparation.ipynb](3.1_box-office-revenue_preparation.ipynb)
 - we import our raw, scraped Box Office Mojo data and adjust data types
 - next, we correct box-office-revenues for inflation
 
-[3.1_box-office-revenue_further-corrections.ipynb](3.1_box-office-revenue_further-corrections.ipynb)
+[3.2_box-office-revenue_further-corrections.ipynb](3.2_box-office-revenue_further-corrections.ipynb)
 - finally, we correct our data making sure to have correct values for worldwide box office revenue
 
-[3.2_box-office-revenue_further-inflation-correction-categories.ipynb](3.2_box-office-revenue_further-inflation-correction-categories.ipynb)
+[3.3_box-office-revenue_further-inflation-correction-categories.ipynb](3.3_box-office-revenue_further-inflation-correction-categories.ipynb)
 - additional information on the categories for which we can correct for inflation
 - in our example we use category: _SS62031,"Admission to movies, theaters, and concerts"_
 
