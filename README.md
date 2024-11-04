@@ -8,7 +8,7 @@
 ### Data Sources
 Source | Link | Data
 -------- | -------- | --------
-IMDB | https://datasets.imdbws.com/ | Information about every movie in the IMDB database, divided into 7 datasets
+IMDB | https://datasets.imdbws.com/ | Information about every movie in the IMDB database, divided into 7 datasets (Cointaining title, release year, runtime, ratings, genre, actors, directors, writers)
 Box Office Mojo | https://www.boxofficemojo.com/ | Box Office Revenue data for every movie (webscraped)
 The Numbers | https://www.the-numbers.com/ | Top 200 movies per year for NA countries
 European Audiovisual Observatory | https://www.obs.coe.int/en/web/observatoire | Top 200 movies per year for EU countries
