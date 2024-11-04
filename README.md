@@ -35,8 +35,6 @@ European Audiovisual Observatory | https://www.obs.coe.int/en/web/observatoire |
 
 ## DATA VISUALISATION
 
----
-
 # Workflow - What each notebook contains
 
 ## 1. Basic preparations
@@ -69,3 +67,30 @@ The only overlapping columns to merge with are _Movie Title_ and _Release Year_.
 - in part 3, we correct the last 100 movies by hand
 - we upload our chunks to a postgreSQL database and combine the tables back to their original size
 - finally, we merge on _Movie Title_ and _Release Year_, check that all movies found their match and upload our final table
+
+## 3. Webscraping and preparing Box Office revenue data
+
+[3.0_box-office-revenue_preparation.ipynb](3.0_box-office-revenue_preparation.ipynb)
+- we import our raw, scraped Box Office Mojo data and adjust data types
+- next, we correct box-office-revenues for inflation
+
+[3.1_box-office-revenue_further-corrections.ipynb](3.1_box-office-revenue_further-corrections.ipynb)
+- finally, we correct our data making sure to have correct values for worldwide box-office-revenue
+
+[3.2_box-office-revenue_further-inflation-correction-categories.ipynb](3.2_box-office-revenue_further-inflation-correction-categories.ipynb)
+- additional information on the categories for which we can correct for inflation
+- in our example we use category: _SS62031,"Admission to movies, theaters, and concerts"_
+
+
+## 4. Changing from wide to long data format
+
+[4.0_transposing_part1.ipynb](4.0_transposing_part1.ipynb)
+- we change back columns with multiple entries and information that is spread over several columns to long format (more helpful when working in Tableau)
+- aferwards, each information is saved as an individual table together with a unique identifier for easy merging/connecting
+- tables we create in this notebook: actors, genres, directors, writers
+
+[4.0_transposing_part2.ipynb](4.0_transposing_part2.ipynb)
+- tables we create in this notebook: producing country
+
+[4.0_transposing_part3.ipynb](4.0_transposing_part3.ipynb)
+- tables we create in this notebook: country released in (from the table on box-office-revenue)
