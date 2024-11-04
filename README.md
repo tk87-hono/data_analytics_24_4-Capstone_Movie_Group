@@ -1,11 +1,4 @@
-# AGENDA
-1. Introduction
-2. Data Information
-3. Data Transformation
-4. Data Analytics
-5. Data Visualisation
-
-## INTRODUCTION
+# INTRODUCTION
 **Date: October / November 2024**
 
 This project was crafted as the capstone of a "Data Analytics Bootcamp" by a team of three data enthusiasts, diving into the vast world of film data to tackle a challenging, real-world question: What makes a movie a hit?
@@ -14,7 +7,7 @@ The project centered around a fictional but insightful scenario: uncovering key 
 
 [Click here](https://youtu.be/wkeVFN3-ecQ) to see the final presentation of this 4 week project.
 
-## DATA INFORMATION
+# DATA INFORMATION
 ### Data Sources
 Source | Link | Data
 -------- | -------- | --------
@@ -23,17 +16,6 @@ Box Office Mojo | https://www.boxofficemojo.com/ | Box Office Revenue data for e
 The Numbers | https://www.the-numbers.com/ | Top 200 movies per year for NA countries
 European Audiovisual Observatory | https://www.obs.coe.int/en/web/observatoire | Top 200 movies per year for EU countries
 
-
-### Data Structure
-[Describing the data structure here.]
-
-## DATA TRANSFORMATION
-[Describe how we transformed the data here.]
-
-## DATA ANALYTICS
-[Describing the analytics that we did]
-
-## DATA VISUALISATION
 
 # Workflow - What each notebook contains
 
@@ -94,3 +76,6 @@ The only overlapping columns to merge with are _Movie Title_ and _Release Year_.
 
 [4.0_transposing_part3.ipynb](4.0_transposing_part3.ipynb)
 - tables we create in this notebook: country released in (from the table on box-office-revenue)
+
+
+## DATA VISUALISATION
