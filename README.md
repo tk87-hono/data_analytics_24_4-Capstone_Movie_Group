@@ -7,6 +7,9 @@ The project centered around a fictional but insightful scenario: uncovering key 
 
 [Click here](https://youtu.be/wkeVFN3-ecQ) to see the final presentation of this 4 week project.
 
+---
+
+
 # DATA INFORMATION
 ### Data Sources
 Source | Link | Data
@@ -16,6 +19,7 @@ Box Office Mojo | https://www.boxofficemojo.com/ | Box Office Revenue data for e
 The Numbers | https://www.the-numbers.com/ | Top 200 movies per year for NA countries
 European Audiovisual Observatory | https://www.obs.coe.int/en/web/observatoire | Top 200 movies per year for EU countries
 
+---
 
 # Workflow - What each notebook contains
 
