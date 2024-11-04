@@ -5,7 +5,7 @@ This project was crafted as the capstone of a "Data Analytics Bootcamp" by a tea
 Armed with a robust dataset from IMDb—the world's largest movie database—we took on the task of sifting through a massive amount of film information. But we didn’t stop there! To deepen our analysis, we harnessed additional data from The Numbers, Box Office Mojo, and the European Audiovisual Observatory, gathered through web scraping techniques.
 The project centered around a fictional but insightful scenario: uncovering key insights about the current worldwide movie market and pinpointing the critical factors that drive a film’s success. In the end, our findings were showcased in a lively presentation, bringing our audience along on a data-driven journey through Hollywood and other markets hits, box office trends, and the secrets of cinematic success.
 
-[Click here](https://youtu.be/wkeVFN3-ecQ) to see the final presentation of this 4 week project.
+[Click here](https://youtu.be/wkeVFN3-ecQ) to see the video of our final presentation of this 4 week project.
 
 ---
 
@@ -82,4 +82,14 @@ The only overlapping columns to merge with are _Movie Title_ and _Release Year_.
 - tables we create in this notebook: country released in (from the table on box-office-revenue)
 
 
+## 5. Additional Tables in SQL
+
+[5.0_tranforming-genres.sql](5.0_tranforming-genres.sql)
+- we created an additional table showing the avg box-office and rank for each genre over each year in SQL
+
+
 ## DATA VISUALISATION
+Examples of visualizations that you can also see in our final presentation (link in Introduction)
+
+
+
